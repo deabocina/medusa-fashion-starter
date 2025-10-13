@@ -45,25 +45,20 @@ export default async function Nav() {
             />
           </button>
 
-          <img
-            src={icons.bag.src}
-            alt="Bag"
-            className="w-5 h-5 object-contain"
-          />
+          <div className="flex items-center gap-1 cursor-pointer">
+            <a href="/cart">
+              {" "}
+              <img
+                src={icons.bag.src}
+                alt="Bag"
+                className="w-5 h-5 object-contain"
+              />
+            </a>
 
-          <Suspense
-            fallback={
-              <LocalizedClientLink
-                className="hover:opacity-70 flex items-center gap-1"
-                href="/cart"
-                data-testid="nav-cart-link"
-              >
-                <span className="text-sm">(0)</span>
-              </LocalizedClientLink>
-            }
-          >
-            <CartButton />
-          </Suspense>
+            <Suspense fallback={<span className="text-sm">(0)</span>}>
+              <CartButton />
+            </Suspense>
+          </div>
         </div>
       </header>
     </div>

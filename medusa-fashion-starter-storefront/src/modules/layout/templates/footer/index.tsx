@@ -3,7 +3,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 export default function Footer() {
   return (
     <footer className="bg-lightGrey w-full">
-      <div className="content-container px-20 py-16 md:py-24">
+      <div className="px-20 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="flex flex-col justify-between">
             <div className="leading-[250%]">

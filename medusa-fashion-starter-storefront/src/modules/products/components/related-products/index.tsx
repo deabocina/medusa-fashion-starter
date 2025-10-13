@@ -2,6 +2,7 @@ import { listProducts } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
 import { HttpTypes } from "@medusajs/types"
 import Product from "../product-preview"
+import Image from "next/image"
 
 type RelatedProductsProps = {
   product: HttpTypes.StoreProduct
@@ -47,23 +48,69 @@ export default async function RelatedProducts({
   }
 
   return (
-    <div className="product-page-constraint">
-      <div className="flex flex-col items-center text-center mb-16">
-        <span className="text-base-regular text-gray-600 mb-6">
-          Related products
-        </span>
-        <p className="text-2xl-regular text-ui-fg-base max-w-lg">
-          You might also want to check out these products.
-        </p>
+    <>
+      <div className="w-full max-w-[1280px] px-6 md:px-16 mx-auto mb-10 md:mb-16">
+        <h2 className="text-[32px] md:text-[48px] mb-6 md:mb-8 font-medium text-left">
+          Collection Inspired Interior
+        </h2>
+
+        <Image
+          src="/images/img1.png"
+          alt="Collection inspired"
+          width={1248}
+          height={702}
+          className="object-cover w-full h-auto"
+        />
       </div>
 
-      <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
-        {products.map((product) => (
-          <li key={product.id}>
-            <Product region={region} product={product} />
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="relative w-full overflow-hidden mb-10 md:mb-16">
+        <Image
+          src="/images/img2.png"
+          alt="Sofa example"
+          width={1440}
+          height={809}
+          className="w-full object-cover"
+          priority
+        />
+      </div>
+
+      <div className="w-full flex flex-col md:flex-row max-w-[1440px] mx-auto px-6 md:px-16 mb-10 md:mb-16">
+        <Image
+          src="/images/img3.png"
+          alt="The Paloma Haven sofa"
+          width={492}
+          height={656}
+          className="object-cover w-full md:w-[492px] h-auto"
+        />
+        <div className="mt-8 md:mt-16 md:ml-24 mb-10 text-left">
+          <h2 className="text-[28px] md:text-[48px] mb-6 md:mb-8 font-medium">
+            The Paloma Haven sofa is a masterpiece of minimalism and luxury.
+          </h2>
+          <a
+            href="#"
+            className="border-b-2 border-black text-[20px] md:text-[24px] hover:opacity-40 transition cursor-pointer"
+          >
+            See more out of ‘Modern Luxe’ collection
+          </a>
+        </div>
+      </div>
+
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-16">
+        <h2 className="text-[32px] md:text-[48px] mb-6 md:mb-8 font-medium text-left">
+          Related Products
+        </h2>
+
+        <div className="flex flex-wrap justify-center md:justify-between w-full gap-8 md:px-10">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="w-[150px] md:w-[220px] text-[14px] md:text-[16px]"
+            >
+              <Product region={region} product={product} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   )
 }

@@ -1,9 +1,7 @@
 "use server"
 
 import { sdk } from "@lib/config"
-import { sortProducts } from "@lib/util/sort-products"
 import { HttpTypes } from "@medusajs/types"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
 
@@ -92,12 +90,10 @@ export const listProducts = async ({
 export const listProductsWithSort = async ({
   page = 0,
   queryParams,
-  sortBy = "created_at",
   countryCode,
 }: {
   page?: number
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
-  sortBy?: SortOptions
   countryCode: string
 }): Promise<{
   response: { products: HttpTypes.StoreProduct[]; count: number }
@@ -117,20 +113,18 @@ export const listProductsWithSort = async ({
     countryCode,
   })
 
-  const sortedProducts = sortProducts(products, sortBy)
-
   const pageParam = (page - 1) * limit
 
   const nextPage = count > pageParam + limit ? pageParam + limit : null
 
-  const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
+  const paginatedProducts = products
 
   return {
     response: {
       products: paginatedProducts,
       count,
     },
-    nextPage,
+    nextPage: null,
     queryParams,
   }
 }

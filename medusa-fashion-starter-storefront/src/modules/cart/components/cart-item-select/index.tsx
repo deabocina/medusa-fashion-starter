@@ -1,5 +1,3 @@
-"use client"
-
 import { IconBadge, clx } from "@medusajs/ui"
 import {
   SelectHTMLAttributes,

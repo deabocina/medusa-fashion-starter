@@ -26,26 +26,27 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
   return (
     <>
-      <div
-        className="content-container flex flex-col lg:flex-row gap-10 py-6 relative"
-      >
-        <div className="w-full lg:w-1/2">
+      <div className="content-container flex flex-col lg:flex-row gap-10 py-6 relative">
+        <div className="w-full lg:w-1/2 mr-6">
           <ImageGallery images={product?.images || []} />
         </div>
 
-        <div className="w-full lg:w-1/2 flex flex-col gap-y-8">
-          <ProductInfo product={product} />
-          <Suspense
-            fallback={
-              <ProductActions
-                disabled={true}
-                product={product}
-                region={region}
-              />
-            }
-          >
-            <ProductActionsWrapper id={product.id} region={region} />
-          </Suspense>
+        <div className="w-full lg:w-1/2">
+          <div className="flex flex-col">
+            <ProductInfo product={product} />
+
+            <Suspense
+              fallback={
+                <ProductActions
+                  disabled={true}
+                  product={product}
+                  region={region}
+                />
+              }
+            >
+              <ProductActionsWrapper id={product.id} region={region} />
+            </Suspense>
+          </div>
         </div>
       </div>
 

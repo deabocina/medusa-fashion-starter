@@ -4,7 +4,6 @@ import { addToCart } from "@lib/data/cart"
 import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
-import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
 import { isEqual } from "lodash"
 import { useParams } from "next/navigation"
@@ -117,31 +116,30 @@ export default function ProductActions({
   }
 
   return (
-    <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
+    <div className="mt-10">
+      <div className="flex flex-col" ref={actionsRef}>
         <div>
-          {(product.variants?.length ?? 0) > 1 && (
-            <div className="flex flex-col gap-y-4">
-              {(product.options || []).map((option) => {
-                return (
-                  <div key={option.id}>
-                    <OptionSelect
-                      option={option}
-                      current={options[option.id]}
-                      updateOption={setOptionValue}
-                      title={option.title ?? ""}
-                      disabled={!!disabled || isAdding}
-                    />
-                  </div>
-                )
-              })}
-              <Divider />
-            </div>
-          )}
+          {[...(product.options || [])]
+            .sort((a, b) => {
+              if (a.title?.toLowerCase().includes("material")) return -1
+              if (b.title?.toLowerCase().includes("material")) return 1
+              return 0
+            })
+            .map((option) => (
+              <div key={option.id}>
+                <OptionSelect
+                  option={option}
+                  current={options[option.id]}
+                  updateOption={setOptionValue}
+                  title={option.title ?? ""}
+                  disabled={!!disabled || isAdding}
+                />
+              </div>
+            ))}
         </div>
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex mt-20 gap-3">
         <div className="flex items-center justify-between border border-gray rounded-md w-[136px] h-10 px-3">
           <button
             type="button"
@@ -186,7 +184,7 @@ export default function ProductActions({
         />
       </div>
 
-      <p className="text-gray-500">Estimate delivery 2-3 days</p>
-    </>
+      <p className="text-gray-500 mt-3">Estimate delivery 2-3 days</p>
+    </div>
   )
 }

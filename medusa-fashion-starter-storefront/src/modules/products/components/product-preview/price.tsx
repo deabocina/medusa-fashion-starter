@@ -13,18 +13,21 @@ export default function PreviewPrice({ price }: { price: VariantPrice }) {
     ? formatNumber(price.original_price)
     : null
 
+  const isSale = price.price_type === "sale"
+
   return (
-    <div className="flex flex-col">
-      {price.price_type === "sale" && original && (
-        <span className="line-through text-black text-[16px]">{original}</span>
-      )}
+    <div className="flex flex-col justify-start h-[28px]">
       <span
-        className={`text-black text-[16px] font-semibold ${
-          price.price_type === "sale" ? "text-red-600" : "text-black"
+        className={`text-[16px] font-semibold ${
+          isSale ? "text-red-600" : "text-black"
         }`}
       >
         {calculated}
       </span>
+
+      {isSale && original && (
+        <span className="line-through text-gray-500 mt-[2px]">{original}</span>
+      )}
     </div>
   )
 }

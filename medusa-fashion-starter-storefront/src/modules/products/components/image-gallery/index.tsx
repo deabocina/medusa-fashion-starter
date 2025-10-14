@@ -9,7 +9,7 @@ type ImageGalleryProps = {
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div className="flex w-full">
-      <div className="w-1/2 flex flex-col gap-4 px-14">
+      <div className="w-[934px] h-[600px] flex flex-col pl-[75px]">
         {images.map((image, index) => (
           <Container
             key={image.id}
@@ -20,11 +20,9 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
               <Image
                 src={image.url}
                 priority={index <= 2}
-                className="absolute inset-0"
                 alt={`Product image ${index + 1}`}
                 fill
                 sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                style={{ objectFit: "cover" }}
               />
             )}
           </Container>

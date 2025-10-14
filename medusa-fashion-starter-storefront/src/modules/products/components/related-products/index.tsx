@@ -49,7 +49,7 @@ export default async function RelatedProducts({
 
   return (
     <>
-      <div className="w-full max-w-[1280px] px-6 md:px-16 mx-auto mb-10 md:mb-16">
+      <div className="w-full max-w-[1280px] mx-auto mb-10 px-6 md:mb-16">
         <h2 className="text-[32px] md:text-[48px] mb-6 md:mb-8 font-medium text-left">
           Collection Inspired Interior
         </h2>
@@ -74,7 +74,7 @@ export default async function RelatedProducts({
         />
       </div>
 
-      <div className="w-full flex flex-col md:flex-row max-w-[1440px] mx-auto px-6 md:px-16 mb-10 md:mb-16">
+      <div className="w-full flex flex-col md:flex-row max-w-[1440px] mx-auto px-6 md:px-16 mb-16 md:mb-16">
         <Image
           src="/images/img3.png"
           alt="The Paloma Haven sofa"
@@ -95,18 +95,21 @@ export default async function RelatedProducts({
         </div>
       </div>
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-16">
-        <h2 className="text-[32px] md:text-[48px] mb-6 md:mb-8 font-medium text-left">
+      <div className="w-full max-w-[1440px] mx-auto md:px-16">
+        <h2 className="text-[32px] md:text-[48px] mb-6 md:mb-16 font-medium text-left">
           Related Products
         </h2>
 
-        <div className="flex flex-wrap justify-center md:justify-between w-full gap-8 md:px-10">
+        <div className="flex flex-wrap justify-center md:justify-between w-full">
           {products.map((product) => (
             <div
               key={product.id}
-              className="w-[150px] md:w-[220px] text-[14px] md:text-[16px]"
+              className="w-[290px] md:w-[390px] text-[14px] md:text-[16px]"
             >
               <Product region={region} product={product} />
+              <span className="text-[12px] text-gray-500">
+                {product.subtitle}
+              </span>
             </div>
           ))}
         </div>

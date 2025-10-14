@@ -9,7 +9,6 @@ import OptionSelect from "@modules/products/components/product-actions/option-se
 import { isEqual } from "lodash"
 import { useParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
-import ProductPrice from "../product-price"
 import MobileActions from "./mobile-actions"
 
 type ProductActionsProps = {
@@ -34,6 +33,10 @@ export default function ProductActions({
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
   const countryCode = useParams().countryCode as string
+  const [quantity, setQuantity] = useState(1)
+
+  const increaseQty = () => setQuantity((q) => Math.min(q + 1, 99))
+  const decreaseQty = () => setQuantity((q) => Math.max(q - 1, 1))
 
   // If there is only 1 variant, preselect the options
   useEffect(() => {
@@ -127,7 +130,6 @@ export default function ProductActions({
                       current={options[option.id]}
                       updateOption={setOptionValue}
                       title={option.title ?? ""}
-                      data-testid="product-options"
                       disabled={!!disabled || isAdding}
                     />
                   </div>
@@ -137,27 +139,38 @@ export default function ProductActions({
             </div>
           )}
         </div>
+      </div>
 
-        <ProductPrice product={product} variant={selectedVariant} />
+      <div className="flex gap-3">
+        <div className="flex items-center justify-between border border-gray rounded-md w-[136px] h-10 px-3">
+          <button
+            type="button"
+            onClick={decreaseQty}
+            className="text-lg font-semibold px-2 hover:text-gray-600"
+            disabled={quantity <= 1}
+          >
+            −
+          </button>
+          <span className="text-base select-none">{quantity}</span>
+          <button
+            type="button"
+            onClick={increaseQty}
+            className="text-lg font-semibold px-2 hover:text-gray-600"
+          >
+            +
+          </button>
+        </div>
 
         <Button
           onClick={handleAddToCart}
-          disabled={
-            !inStock ||
-            !selectedVariant ||
-            !!disabled ||
-            isAdding ||
-            !isValidVariant
-          }
           variant="primary"
-          className="w-full h-10"
+          className="w-[388px] h-10 font-normal text-[16px]"
           isLoading={isAdding}
-          data-testid="add-product-button"
         >
           {!selectedVariant && !options
             ? "Select variant"
             : !inStock || !isValidVariant
-            ? "Out of stock"
+            ? "Add to cart"
             : "Add to cart"}
         </Button>
         <MobileActions
@@ -172,6 +185,8 @@ export default function ProductActions({
           optionsDisabled={!!disabled || isAdding}
         />
       </div>
+
+      <p className="text-gray-500">Estimate delivery 2-3 days</p>
     </>
   )
 }

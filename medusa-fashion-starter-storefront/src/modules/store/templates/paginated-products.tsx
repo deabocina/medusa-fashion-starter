@@ -60,17 +60,14 @@ export default async function PaginatedProducts({
 
   return (
     <>
-      <ul
-        className="grid grid-cols-2 w-full small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8"
-        data-testid="products-list"
-      >
-        {products.map((p) => {
-          return (
-            <li key={p.id}>
+      <ul className="flex gap-10 flex-wrap justify-center">
+        {products.map((p) => (
+          <li key={p.id} className="w-[400px]">
+            <div className="overflow-hidden">
               <ProductPreview product={p} region={region} />
-            </li>
-          )
-        })}
+            </div>
+          </li>
+        ))}
       </ul>
       {totalPages > 1 && (
         <Pagination

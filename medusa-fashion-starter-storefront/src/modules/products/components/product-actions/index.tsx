@@ -162,7 +162,7 @@ export default function ProductActions({
         <Button
           onClick={handleAddToCart}
           variant="primary"
-          className="w-full md:w-[388px] h-10 font-normal text-[16px] rounded-[4px] mt-4 md:mt-0"
+          className="w-full md:w-[460px] h-10 font-normal text-[16px] rounded-[4px] mt-4 md:mt-0"
           isLoading={isAdding}
         >
           {isAdding

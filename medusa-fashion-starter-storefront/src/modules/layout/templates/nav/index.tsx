@@ -7,7 +7,7 @@ import NavClient from "./nav-client"
 export default async function Nav() {
   return (
     <div className="sticky top-0 inset-x-0 z-50 bg-white">
-      <header className="relative h-16 content-container flex items-center justify-between p-2 md:p-10 mx-8">
+      <header className="relative h-16 content-container flex items-center justify-between md:p-8 mx-8">
         <div className="text-[24px] font-medium">
           <LocalizedClientLink href="/">SofaSocietyCo.</LocalizedClientLink>
         </div>

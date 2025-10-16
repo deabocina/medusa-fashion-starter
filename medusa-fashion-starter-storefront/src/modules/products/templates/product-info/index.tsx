@@ -8,7 +8,7 @@ type ProductInfoProps = {
 const ProductInfo = ({ product }: ProductInfoProps) => {
   return (
     <div>
-      <div className="flex flex-col mx-5 md:mx-auto">
+      <div className="flex flex-col mx-5 md:mx-auto mt-8 md:mt-0">
         <span className="text-grey text-[16px] mb-1"> {product.subtitle}</span>
 
         <h3 className="text-[24px] md:text-[40px] font-medium">

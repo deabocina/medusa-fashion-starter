@@ -51,19 +51,22 @@ export default async function RelatedProducts({
       <ProductSections />
 
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-16">
-        <h2 className="text-[24px] md:text-[48px] mb-6 md:mb-12 font-medium text-left">
+        <h2 className="text-[24px] md:text-[48px] mb-9 md:mb-12 font-medium text-left">
           Related Products
         </h2>
 
-        <div className="md:hidden flex flex-wrap justify-center w-full">
+        <div className="md:hidden flex flex-wrap justify-start w-full gap-x-5">
           {products.slice(0, 2).map((product) => (
-            <div key={product.id} className="w-[163px] text-[12px] mb-4">
+            <div
+              key={product.id}
+              className="w-[calc(50%-0.625rem)] text-[12px] mb-4"
+            >
               <Product region={region} product={product} />
             </div>
           ))}
         </div>
 
-        <div className="hidden md:flex flex-wrap justify-center md:justify-between w-full">
+        <div className="hidden md:flex flex-wrap justify-between w-full">
           {products.map((product) => (
             <div
               key={product.id}

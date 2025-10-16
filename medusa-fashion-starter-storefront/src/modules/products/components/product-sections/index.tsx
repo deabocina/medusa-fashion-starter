@@ -17,7 +17,7 @@ export default function ProductSections() {
         />
       </div>
 
-      <div className="relative w-full overflow-hidden px-6 md:px-0 mb-10 md:mb-16">
+      <div className="relative w-full overflow-hidden px-5 md:px-0 mb-10 md:mb-16">
         <Image
           src="/images/img2.png"
           alt="Sofa example"
@@ -28,7 +28,7 @@ export default function ProductSections() {
         />
       </div>
 
-      <div className="flex flex-col md:flex-row max-w-[1430px] px-6 md:px-16 mb-16 md:mb-32 md:mx-auto">
+      <div className="flex flex-col md:flex-row max-w-[1430px] px-5 md:px-16 mb-16 md:mb-32 md:mx-auto">
         <Image
           src="/images/img3.png"
           alt="The Paloma Haven sofa"

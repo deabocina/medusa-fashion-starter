@@ -16,9 +16,8 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, images }) => {
       className="
         relative 
         w-full 
-        
         max-w-[500px]
-        aspect-[3/2]
+        aspect-square md:aspect-[3/2]
         overflow-hidden 
         hover:shadow-lg 
         transition-all 
@@ -37,7 +36,7 @@ const ImageOrPlaceholder = ({ image }: { image?: string }) => {
     <Image
       src={image}
       alt="Thumbnail"
-      className="absolute inset-0 object-cover object-center rounded-none"
+      className="absolute inset-0 object-fill md:object-cover object-center rounded-none"
       draggable={false}
       quality={70}
       fill

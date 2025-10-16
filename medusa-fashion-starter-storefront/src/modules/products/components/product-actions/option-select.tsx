@@ -38,7 +38,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
 
   if (title.toLowerCase().includes("material")) {
     return (
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 mx-5 md:mx-0">
         <div>
           <label>{title}</label>
           {current && <span className="text-gray-500 ml-8">{current}</span>}
@@ -46,7 +46,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
 
         <div className="flex items-center gap-4">
           <select
-            className="border border-gray-200 rounded-md px-3 py-3 text-sm w-[243px]"
+            className="border border-gray-200 rounded-md px-3 py-3 text-sm w-full md:w-[243px]"
             value={current || ""}
             onChange={(e) => updateOption(option.id, e.target.value)}
             disabled={disabled}
@@ -65,7 +65,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
 
   if (title.toLowerCase().includes("color")) {
     return (
-      <div className="flex flex-col gap-2 my-5">
+      <div className="flex flex-col gap-2 my-6 mx-5 md:mx-0">
         <div>
           <span>{title}</span>
           {current && <span className="text-gray-500 ml-8">{current}</span>}
@@ -77,7 +77,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
             const isSelected = color === current
 
             return (
-              <div key={color} className="flex flex-col items-center">
+              <div key={color} className="flex flex-col items-center mr-2">
                 <div className="w-8 h-8" style={{ backgroundColor: hex }} />
                 <div
                   className={`w-8 border-b ${

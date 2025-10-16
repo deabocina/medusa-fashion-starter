@@ -50,7 +50,7 @@ export default async function RelatedProducts({
   return (
     <>
       <div className="w-full max-w-[1280px] mx-auto mb-10 px-6 md:mb-16">
-        <h2 className="text-[32px] md:text-[48px] mb-6 md:mb-8 font-medium text-left">
+        <h2 className="text-[24px] md:text-[48px] mb-6 md:mb-10 font-medium text-left">
           Collection Inspired Interior
         </h2>
 

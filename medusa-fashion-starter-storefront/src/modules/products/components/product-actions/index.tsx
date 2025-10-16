@@ -1,7 +1,6 @@
 "use client"
 
 import { addToCart } from "@lib/data/cart"
-import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
@@ -97,8 +96,6 @@ export default function ProductActions({
 
   const actionsRef = useRef<HTMLDivElement>(null)
 
-  const inView = useIntersection(actionsRef, "0px")
-
   // add the selected variant to the cart
   const handleAddToCart = async () => {
     if (!selectedVariant?.id) return null
@@ -107,7 +104,7 @@ export default function ProductActions({
 
     await addToCart({
       variantId: selectedVariant.id,
-      quantity: 1,
+      quantity,
       countryCode,
     })
 
@@ -138,12 +135,14 @@ export default function ProductActions({
         </div>
       </div>
 
-      <div className="flex mt-20 gap-3">
-        <div className="flex items-center justify-between border border-gray rounded-md w-[136px] h-10 px-3">
+      <div className="md:flex mt-2 md:mt-16 gap-3 px-5 md:px-0">
+        <div className="flex items-center justify-between border border-gray rounded-[4px] w-full md:w-[110px] h-10 px-32 md:px-3">
           <button
             type="button"
             onClick={decreaseQty}
-            className="text-lg font-semibold px-2 hover:text-gray-600"
+            className={`text-[24px] px-2 transition ${
+              quantity <= 1 ? "text-gray-300 cursor-not-allowed" : "text-black"
+            }`}
             disabled={quantity <= 1}
           >
             −
@@ -152,7 +151,9 @@ export default function ProductActions({
           <button
             type="button"
             onClick={increaseQty}
-            className="text-lg font-semibold px-2 hover:text-gray-600"
+            className={`text-[24px] px-2 transition ${
+              quantity > 99 ? "text-gray-300 cursor-not-allowed" : "text-black"
+            }`}
           >
             +
           </button>
@@ -161,18 +162,22 @@ export default function ProductActions({
         <Button
           onClick={handleAddToCart}
           variant="primary"
-          className="w-[388px] h-10 font-normal text-[16px]"
+          className="w-full md:w-[388px] h-10 font-normal text-[16px] rounded-[4px] mt-4 md:mt-0"
           isLoading={isAdding}
         >
-          {!selectedVariant && !options
+          {isAdding
+            ? "Adding..."
+            : !selectedVariant && !options
             ? "Select variant"
-            : !inStock || !isValidVariant
-            ? "Add to cart"
+            : !isValidVariant
+            ? "Unavailable"
             : "Add to cart"}
         </Button>
       </div>
 
-      <p className="text-gray-500 mt-3">Estimate delivery 2-3 days</p>
+      <p className="text-gray-500 mt-3 text-[16px] px-5 md:px-0">
+        Estimate delivery 2-3 days
+      </p>
     </div>
   )
 }

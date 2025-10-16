@@ -6,14 +6,9 @@ import React from "react"
 type ThumbnailProps = {
   thumbnail?: string | null
   images?: any[] | null
-  "data-testid"?: string
 }
 
-const Thumbnail: React.FC<ThumbnailProps> = ({
-  thumbnail,
-  images,
-  "data-testid": dataTestid,
-}) => {
+const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, images }) => {
   const initialImage = thumbnail || images?.[0]?.url
 
   return (
@@ -21,6 +16,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
       className="
         relative 
         w-full 
+        
         max-w-[500px]
         aspect-[3/2]
         overflow-hidden 
@@ -30,7 +26,6 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
         bg-white 
         rounded-none
       "
-      data-testid={dataTestid}
     >
       <ImageOrPlaceholder image={initialImage} />
     </Container>

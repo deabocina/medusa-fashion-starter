@@ -26,7 +26,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
   return (
     <>
-      <div className="content-container flex flex-col lg:flex-row gap-10 py-6 relative">
+      <div className="content-container flex flex-col lg:flex-row md:gap-10 py-6 relative">
         <div className="w-full lg:w-1/2 mr-6">
           <ImageGallery images={product?.images || []} />
         </div>
@@ -50,7 +50,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         </div>
       </div>
 
-      <div className="content-container my-16 lg:my-32">
+      <div className="content-container my-28 lg:my-32">
         <Suspense fallback={<SkeletonRelatedProducts />}>
           <RelatedProducts product={product} countryCode={countryCode} />
         </Suspense>

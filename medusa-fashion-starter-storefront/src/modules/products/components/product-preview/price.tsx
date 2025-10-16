@@ -16,9 +16,9 @@ export default function PreviewPrice({ price }: { price: VariantPrice }) {
   const isSale = price.price_type === "sale"
 
   return (
-    <div className="flex flex-col justify-start h-[28px]">
+    <div className="flex md:flex-col justify-between h-[28px]">
       <span
-        className={`text-[16px] font-semibold ${
+        className={`text-[12px] md:text-[16px] font-semibold ${
           isSale ? "text-red-600" : "text-black"
         }`}
       >
@@ -26,7 +26,7 @@ export default function PreviewPrice({ price }: { price: VariantPrice }) {
       </span>
 
       {isSale && original && (
-        <span className="line-through text-gray-500 mt-[2px]">{original}</span>
+        <span className="line-through text-gray-500">{original}</span>
       )}
     </div>
   )

@@ -1,4 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
+import { icons } from "assets/assets"
 import React from "react"
 
 type OptionSelectProps = {
@@ -44,9 +45,9 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
           {current && <span className="text-gray-500 ml-8">{current}</span>}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="relative w-full md:w-[243px]">
           <select
-            className="border border-gray-200 rounded-md px-3 py-3 text-sm w-full md:w-[243px]"
+            className="border border-gray-200 rounded-[4px] px-3 py-3 text-sm w-full appearance-none pr-10"
             value={current || ""}
             onChange={(e) => updateOption(option.id, e.target.value)}
             disabled={disabled}
@@ -58,6 +59,14 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
               </option>
             ))}
           </select>
+
+          <span className="absolute right-4 top-1/2 -translate-y-1/2">
+            <img
+              src={icons.chevronDown.src}
+              alt="chevron"
+              className="w-5 h-5"
+            />
+          </span>
         </div>
       </div>
     )
@@ -65,7 +74,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
 
   if (title.toLowerCase().includes("color")) {
     return (
-      <div className="flex flex-col gap-2 my-6 mx-5 md:mx-0">
+      <div className="flex flex-col gap-4 my-6 mx-5 md:mx-0">
         <div>
           <span>{title}</span>
           {current && <span className="text-gray-500 ml-8">{current}</span>}

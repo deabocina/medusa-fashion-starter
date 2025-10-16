@@ -9,7 +9,7 @@ type ImageGalleryProps = {
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div className="flex w-full">
-      <div className="w-[934px] h-[600px] flex flex-col pl-[75px]">
+      <div className="w-[934px] h-[600px] flex flex-col md:pl-[75px]">
         {images.map((image, index) => (
           <Container
             key={image.id}

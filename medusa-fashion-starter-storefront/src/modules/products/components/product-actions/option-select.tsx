@@ -1,6 +1,7 @@
 import { HttpTypes } from "@medusajs/types"
 import { icons } from "assets/assets"
 import React from "react"
+import { useEffect } from "react"
 
 type OptionSelectProps = {
   option: HttpTypes.StoreProductOption
@@ -36,6 +37,28 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
   disabled,
 }) => {
   const filteredOptions = (option.values ?? []).map((v) => v.value)
+
+  useEffect(() => {
+    if (!current && filteredOptions.length > 0) {
+      if (title.toLowerCase().includes("material")) {
+        const defaultMaterial =
+          filteredOptions.find((value) =>
+            value.toLowerCase().includes("linen")
+          ) || filteredOptions[0]
+
+        updateOption(option.id, defaultMaterial)
+      }
+
+      if (title.toLowerCase().includes("color")) {
+        const defaultColor =
+          filteredOptions.find((value) =>
+            value.toLowerCase().includes("light gray")
+          ) || filteredOptions[0]
+
+        updateOption(option.id, defaultColor)
+      }
+    }
+  }, [current, filteredOptions, option.id, title, updateOption])
 
   if (title.toLowerCase().includes("material")) {
     return (

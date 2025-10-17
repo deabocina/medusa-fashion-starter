@@ -1,21 +1,21 @@
 import { Suspense } from "react"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import { icons } from "assets/assets"
-import NavClient from "./nav-client"
+import MobileMenu from "./mobile-menu"
+import MobileCart from "./mobile-cart"
 
 export default async function Nav() {
   return (
     <div className="sticky top-0 inset-x-0 z-50 bg-white">
-      <header className="relative h-16 content-container flex items-center justify-between md:p-8 mx-8">
+      <header className="relative h-16 flex items-center justify-between md:p-8 mx-8">
         <div className="text-[24px] font-medium">
-          <LocalizedClientLink href="/">SofaSocietyCo.</LocalizedClientLink>
+          <a href="/">SofaSocietyCo.</a>
         </div>
 
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-8 text-[16px]">
-          <LocalizedClientLink href="#">About</LocalizedClientLink>
-          <LocalizedClientLink href="#">Inspiration</LocalizedClientLink>
-          <LocalizedClientLink href="/store">Shop</LocalizedClientLink>
+          <a href="#">About</a>
+          <a href="#">Inspiration</a>
+          <a href="/store">Shop</a>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
@@ -36,7 +36,12 @@ export default async function Nav() {
         </div>
 
         {/* MOBILE PART */}
-        <NavClient />
+        <div className="md:hidden flex">
+          <Suspense fallback={<span className="text-sm">(0)</span>}>
+            <MobileCart />
+          </Suspense>
+          <MobileMenu />
+        </div>
       </header>
     </div>
   )

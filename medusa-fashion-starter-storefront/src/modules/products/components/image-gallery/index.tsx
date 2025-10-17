@@ -34,7 +34,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div className="w-full relative">
       {/* MOBILE */}
-      <div className="md:hidden relative w-full aspect-[5/6] overflow-hidden">
+      <div className="md:hidden relative w-full aspect-[5/6] overflow-hidden -mt-6">
         <Image
           src={images[activeImageIndex].url}
           alt={`Product image ${activeImageIndex + 1}`}

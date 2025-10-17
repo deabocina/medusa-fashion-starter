@@ -6,7 +6,3 @@
 body {
   font-family: "Mona Sans";
 }
-
-div::-webkit-scrollbar {
-  display: none;
-}

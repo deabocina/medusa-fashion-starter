@@ -36,7 +36,7 @@ The repository includes two main parts:
 3. Access the Medusa Admin panel to manage products, variants, and pricing:
    http://localhost:9000/app
 
-### Next.js
+### Next.js (Frontend)
 
 1. Install dependencies:
 
@@ -50,7 +50,7 @@ The repository includes two main parts:
    npm run dev
    ```
 
-3. Open the application in your browser
+3. Open the application in your browser:
    http://localhost:8000
 
 ## Estimated Development Time
@@ -60,7 +60,7 @@ The project was completed in approximately 4-5 days.
 ## Challenges and Notes
 
 - Being my first experience with Medusa, the initial setup required extra time to get familiar with the documentation.
-- At first, I could not understand why changes made in the Medusa Admin panel were not showing in the frontend. After reviewing the code, I realized it was due to caching (force store vs no-store). Setting the fetch to no-store solved the issue.
+- At first, I could not understand why changes made in the Medusa Admin panel were not showing in the frontend. After reviewing the code, I realized it was due to caching (force-cache vs no-store). Setting the fetch to no-store solved the issue.
 - Implementing the main product image at the top of the Product page required careful organization of multiple components to achieve the desired layout.
 
 ## Overall
